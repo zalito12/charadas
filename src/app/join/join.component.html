@@ -1,0 +1,71 @@
+<ng-template #notFound>Game not found! Your link could be broken?</ng-template>
+<div *ngIf="game$ | async as game">
+  <div *ngIf="game.exists; else notFound">
+    <form [formGroup]="formGroup">
+      <mat-vertical-stepper linear #stepper>
+        <mat-step
+          label="Search game"
+          [stepControl]="this.formGroup.get('gameId')"
+          [editable]="editable"
+        >
+          <p>Use your game id to join now!</p>
+          <mat-form-field class="example-full-width">
+            <mat-label>Game Id</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="kHPBgdwqEiIEvUSPc"
+              formControlName="gameId"
+              required
+            />
+          </mat-form-field>
+          <div>
+            <button
+              type="button"
+              mat-stroked-button
+              color="primary"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </mat-step>
+        <mat-step
+          label="Configure your identity"
+          [stepControl]="this.formGroup.get('userName')"
+          [editable]="editable"
+        >
+          <p>Think about who you want to be!</p>
+          <mat-form-field class="example-full-width">
+            <mat-label>Your name</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Mr. Proper"
+              formControlName="userName"
+              required
+            />
+          </mat-form-field>
+          <div class="buttons">
+            <button mat-button matStepperPrevious type="button">Back</button>
+            <button
+              type="button"
+              mat-stroked-button
+              color="primary"
+              matStepperNext
+              (click)="join()"
+            >
+              Join
+            </button>
+          </div>
+        </mat-step>
+        <mat-step label="Create">
+          <p>Joining to {{ game.data().name }}!</p>
+          <p>
+            <mat-spinner></mat-spinner>
+          </p>
+        </mat-step>
+      </mat-vertical-stepper>
+    </form>
+  </div>
+</div>

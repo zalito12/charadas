@@ -1,0 +1,21 @@
+mat-drawer {
+  width: 30%;
+}
+
+mat-divider {
+  height: 15rem;
+}
+
+button.success {
+  color: white;
+  background: #007E33;
+  margin-left: 1rem;
+}
+
+.buttonss {
+  margin-top: 2rem;
+}
+
+.guess {
+  text-transform: capitalize;
+}

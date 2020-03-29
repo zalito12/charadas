@@ -1,0 +1,55 @@
+<form [formGroup]="formGroup">
+  <mat-vertical-stepper linear>
+    <mat-step
+      label="Configure game"
+      [stepControl]="this.formGroup.get('gameName')"
+      [editable]="editable"
+    >
+      <p>Set a funny name to your game!</p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Game name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Having fun on quarantine"
+          formControlName="gameName"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button type="button" mat-stroked-button color="primary" matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step
+      label="Configure your identity"
+      [stepControl]="this.formGroup.get('userName')"
+      [editable]="editable"
+    >
+      <p>Think about who you want to be!</p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Your name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Mr. Proper"
+          formControlName="userName"
+          required
+        />
+      </mat-form-field>
+      <div class="buttons">
+        <button mat-button matStepperPrevious type="button">Back</button>
+        <button type="button" mat-stroked-button color="primary" matStepperNext (click)="create()">
+          Create
+        </button>
+      </div>
+    </mat-step>
+    <mat-step label="Create">
+      <p>Creating your game!</p>
+      <p>
+        <mat-spinner></mat-spinner>
+      </p>
+    </mat-step>
+  </mat-vertical-stepper>
+</form>

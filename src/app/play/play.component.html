@@ -1,0 +1,56 @@
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+<ng-template #notFound>
+  Game not found!<br />
+  May be this user doesn't exists, try to log out with top bar icon
+  <mat-icon>exit_to_app</mat-icon>
+</ng-template>
+<ng-template #guessing>
+  <h1>
+    It's yout turn! Try to guess the secret word
+  </h1>
+</ng-template>
+<div *ngIf="user$ | async as user; else loading">
+  <div *ngIf="user; else notFound">
+    <mat-grid-list cols="2" *ngIf="game$ | async as game">
+      <mat-grid-tile>
+        <div>
+          <h1
+            *ngIf="
+              game.users[game.currentTurn] &&
+                game.users[game.currentTurn].uid !== user.uid;
+              else guessing
+            "
+          >
+            {{ game.users[game.currentTurn].name }} must guess:
+            <span class="accent guess">{{ game.word }}</span>
+          </h1>
+          <div class="buttons">
+            <button mat-flat-button color="warn" (click)="wrong(game)">
+              Wrong :(
+            </button>
+            <button mat-flat-button class="success" (click)="correct(game)">
+              Correct!
+            </button>
+          </div>
+        </div>
+        <br />
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-divider vertical></mat-divider>
+        <mat-list>
+          <div mat-subheader>{{ game.name }}</div>
+          <mat-list-item
+            *ngFor="let player of game.sortedUsers"
+            [ngClass]="{ accent: player.uid === user.uid }"
+          >
+            <mat-icon mat-list-icon>face</mat-icon>
+            <div mat-line>{{ player.name }}</div>
+            <div mat-line>Points {{ player.points }}</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
