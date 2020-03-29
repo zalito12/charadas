@@ -8,7 +8,7 @@ See [demo](https://charadas-game.web.app/play)
 
 ## Development server
 
-You will need and ``.env.ts`` file under ``environments`` folder with your firebase configuration.
+You will need an ``.env.ts`` file under ``environments`` folder with your firebase configuration.
 
 ````
 npm install
@@ -21,7 +21,7 @@ firebase emulator:start
 
 ## Deploy
 
-You will need and ``.env.prod.ts`` file under ``environments`` folder with your firebase configuration.
+You will need an ``.env.prod.ts`` file under ``environments`` folder with your firebase configuration.
 
 ````
 cd functions
