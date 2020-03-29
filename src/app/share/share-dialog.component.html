@@ -1,9 +1,19 @@
 <h1 mat-dialog-title>Invite your friends</h1>
 <div mat-dialog-content>
   <p>Send this link to your friends and they will join the game!</p>
-  <mat-form-field style="width: 100%;">
+  <mat-form-field style="width: calc(100% - 40px);">
     <input matInput [(ngModel)]="url" style="width: 100%;" />
   </mat-form-field>
+  <button
+    mat-icon-button
+    aria-label="Copy"
+    matTooltip="Click to copy"
+    [matTooltipDisabled]="!!copiedTooltip"
+    [appCopyClipboard]="url"
+    (copied)="copy()"
+  >
+    <mat-icon [matTooltip]="copiedTooltip" #tooltip="matTooltip">file_copy</mat-icon>
+  </button>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="close()">Close</button>

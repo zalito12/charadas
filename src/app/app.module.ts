@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
 import { ImportComponent } from './import/import.component';
 import { ShareDialog } from './share/share-dialog.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, CreateComponent, PlayComponent, JoinComponent, ImportComponent, ShareDialog],
@@ -28,7 +29,8 @@ import { ShareDialog } from './share/share-dialog.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
