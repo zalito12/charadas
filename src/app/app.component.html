@@ -3,6 +3,14 @@
     <span>Charadas</span>
     <span class="spacer"></span>
     <button
+      *ngIf="user$ | async as user"
+      mat-icon-button
+      aria-label="Share"
+      (click)="share(user.gameId)"
+    >
+      <mat-icon>share</mat-icon>
+    </button>
+    <button
       *ngIf="user"
       mat-icon-button
       aria-label="Log out"

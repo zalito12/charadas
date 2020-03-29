@@ -14,9 +14,10 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
 import { ImportComponent } from './import/import.component';
+import { ShareDialog } from './share/share-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateComponent, PlayComponent, JoinComponent, ImportComponent],
+  declarations: [AppComponent, CreateComponent, PlayComponent, JoinComponent, ImportComponent, ShareDialog],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
